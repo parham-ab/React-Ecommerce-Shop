@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 58 58" xml:space="preserve">
+<path style="fill:#DD352E;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+	M53.395,23.545C51.318,19.943,47.434,17.5,43,17.5h-0.541c-1.664-4.615-7.053-8-13.459-8s-11.796,3.385-13.459,8H15
+	c-4.434,0-8.318,2.443-10.395,6.045C4.741,23.557,3.868,25.477,4,25.5v14h50v-13C54.132,26.477,53.259,23.557,53.395,23.545z"/>
+<path style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" d="M27.5,23L27.5,23
+	c-0.828-0.828-0.828-2.172,0-3l0,0c0.828-0.828,2.172-0.828,3,0l0,0c0.828,0.828,0.828,2.172,0,3l0,0
+	C29.672,23.828,28.328,23.828,27.5,23z"/>
+<line style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="32" y1="24.5" x2="30.5" y2="23"/>
+<line style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="32" y1="18.5" x2="30.5" y2="20"/>
+<line style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="26" y1="18.5" x2="27.5" y2="20"/>
+<line style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="26" y1="24.5" x2="27.5" y2="23"/>
+<path style="fill:#B02721;" d="M57.873,26.478C57.427,24.68,55.69,23.5,53.838,23.5h0C51.166,23.5,49,25.666,49,28.338v8.629
+	c0,0.847-0.687,1.533-1.533,1.533H10.533C9.687,38.5,9,37.813,9,36.967v-8.629C9,25.666,6.834,23.5,4.162,23.5h0
+	c-2.014,0-3.836,1.419-4.12,3.413C-0.259,29.029,1.1,30.866,3,31.359v10.226c0,1.61,1.305,2.916,2.916,2.916h46.169
+	c1.61,0,2.916-1.305,2.916-2.916V31.359C57.03,30.833,58.442,28.773,57.873,26.478z"/>
+<polygon style="fill:#9E6C53;" points="9,49.5 6,49.5 6,44.5 11,44.5 "/>
+<polygon style="fill:#9E6C53;" points="49,49.5 52,49.5 52,44.5 47,44.5 "/>
+<path style="fill:#891125;" d="M29,38.5H9v-4l0,0c6.419-2.568,13.581-2.568,20,0l0,0V38.5z"/>
+<path style="fill:#A51627;" d="M49,38.5H29v-4l0,0c6.419-2.568,13.581-2.568,20,0l0,0V38.5z"/>
+<path style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+	M19,21.5c0-2.211-1.789-4-4-4"/>
+<path style="fill:none;stroke:#B02721;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+	M39,21.5c0-2.211,1.789-4,4-4"/>
+<path style="fill:#6C2027;" d="M54.984,31.344H53c-0.553,0-1,0.448-1,1s0.447,1,1,1h1.984V31.344z"/>
+<path style="fill:#6C2027;" d="M3,33.344h1.984c0.553,0,1-0.448,1-1s-0.447-1-1-1H3V33.344z"/>
+</svg>
