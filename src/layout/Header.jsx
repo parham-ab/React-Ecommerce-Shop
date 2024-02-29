@@ -4,7 +4,6 @@ const Header = () => {
   return (
     <header>
       <Searchbar />
-      
     </header>
   );
 };

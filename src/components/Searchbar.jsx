@@ -26,7 +26,7 @@ const Searchbar = () => {
         <img src={logo} alt={"logo"} width={"37px"} />
         <Input
           type="text"
-          placeholder="جستوجو..."
+          placeholder="Search..."
           size=""
           className="sm:w-[240px] md:w-[400px]"
           endContent={
@@ -39,7 +39,7 @@ const Searchbar = () => {
         <DropdownTrigger>
           <Avatar
             as="button"
-            className="transition-transform text-lg mr-3"
+            className="transition-transform text-lg ml-3"
             icon={<FaUserAlt />}
             classNames={{
               icon: "text-gray-700",

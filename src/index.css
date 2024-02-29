@@ -1,17 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* fonts */
-@font-face {
-  font-family: "Vazir";
-  src: url("../public/fonts/Vazir.woff") format("woff"),
-    url("../public/fonts/Vazir.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Vazir-Medium";
-  src: url("../public/fonts/Vazir-Medium.woff") format("woff"),
-    url("../public/fonts/Vazir-Medium.woff2") format("woff2");
-}
+/* styles */
 body {
-  font-family: "Vazir", "Vazir-Medium";
+  font-family: "Nunito", sans-serif;
 }
