@@ -5,17 +5,17 @@ import { IoIosLogIn } from "react-icons/io";
 const searchbarMenu = [
   {
     path: "/login",
-    title: "ورود",
+    title: "login",
     icon: IoIosLogIn,
   },
   {
-    path: "/shopingCard",
-    title: "سبد خرید",
+    path: "/shoppingCard",
+    title: "Shopping Card",
     icon: MdOutlineShoppingBasket,
   },
   {
     path: "/settings",
-    title: "تنظیمات",
+    title: "settings",
     icon: IoIosSettings,
   },
 ];

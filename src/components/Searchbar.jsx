@@ -65,7 +65,7 @@ const Searchbar = () => {
               color="danger"
               startContent={<IoExitOutline className="text-danger" />}
             >
-              خروج
+              LogOut
             </DropdownItem>
           </DropdownSection>
         </DropdownMenu>
