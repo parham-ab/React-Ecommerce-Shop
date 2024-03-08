@@ -1,10 +1,10 @@
-import { useGetAllProductsQuery } from "../features/api/apiSlice";
+// import { useGetAllProductsQuery } from "../features/api/apiSlice";
 import PreLoader from "components/common/Preloader";
 import ProductCard from "./common/ProductCard";
 
-const FeaturedProducts = () => {
-  const { data: products, isLoading } = useGetAllProductsQuery();
-  if (isLoading) return <PreLoader />;
+const FeaturedProducts = ({ products, isLoading }) => {
+  // const { data: products, isLoading } = useGetAllProductsQuery();
+  // if (isLoading) return <PreLoader />;
   let mutableProducts = [...products]
     ?.sort((a, b) => b?.rating?.rate - a?.rating?.rate)
     .slice(0, 3);
