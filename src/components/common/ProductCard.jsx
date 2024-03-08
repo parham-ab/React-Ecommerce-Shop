@@ -23,7 +23,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
           alt={title}
           width={"150px"}
           height={"150px"}
-          className="m-auto object-cover w-[150px] h-[150px]"
+          className="m-auto object-contain w-[150px] h-[150px]"
         />
 
         {freeDelivery && (
