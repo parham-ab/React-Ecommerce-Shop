@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   return (
     <>
       {mutableProducts.map((product) => (
-        <div key={product.id} className="grid grid-cols-3 gap-3">
+        <div key={product.id} className="m-auto">
           <ProductCard freeDelivery {...product} />
         </div>
       ))}

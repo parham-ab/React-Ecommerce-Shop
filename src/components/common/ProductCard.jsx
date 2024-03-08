@@ -1,6 +1,5 @@
 import { FaTruckFast } from "react-icons/fa6";
 import { TiMinus } from "react-icons/ti";
-
 import { FaStar, FaRegTrashAlt } from "react-icons/fa";
 import { IoIosAdd } from "react-icons/io";
 
@@ -17,14 +16,14 @@ import titleSplit from "utils/titleSplit";
 
 const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
   return (
-    <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[340px] hover:bg-gray-200 transition-all">
+    <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[350px] hover:bg-gray-200 transition-all">
       <Link to={`products/${id}`} className="flex flex-col gap-3">
         <img
           src={image}
           alt={title}
           width={"150px"}
           height={"150px"}
-          className="m-auto"
+          className="m-auto object-cover w-[150px] h-[150px]"
         />
 
         {freeDelivery && (
@@ -43,7 +42,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
             <span className="text-sm">{rating?.rate}</span>
           </div>
           {rating?.count < 10 && (
-            <span className="text-sm">{rating?.count} items Left</span>
+            <span className="text-xs text-red-500">{rating?.count} items Left</span>
           )}
         </div>
 
