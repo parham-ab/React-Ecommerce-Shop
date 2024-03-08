@@ -10,6 +10,7 @@ const fileNames = [
   "features",
   "routes",
   "assets",
+  "constants",
 ];
 
 const pathes = fileNames.reduce(

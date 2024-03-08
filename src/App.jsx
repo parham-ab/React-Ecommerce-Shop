@@ -6,7 +6,7 @@ import PreLoader from "components/common/Preloader";
 
 const App = () => {
   return (
-    // <Layout>
+    <Layout>
     <Routes>
       {mainRoutes.map((item) => (
         <Route
@@ -19,7 +19,7 @@ const App = () => {
       ))}
       <Route path="/*" element={<Navigate to="/products" />} />
     </Routes>
-    // </Layout>
+    </Layout>
   );
 };
 

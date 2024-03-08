@@ -1,4 +1,4 @@
-import logo from "assets/sofa.png";
+import logo from "assets/shop.png";
 import { Avatar, Input } from "@nextui-org/react";
 
 import {

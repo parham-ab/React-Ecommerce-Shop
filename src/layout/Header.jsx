@@ -2,7 +2,7 @@ import Searchbar from "components/Searchbar";
 
 const Header = () => {
   return (
-    <header>
+    <header className="pb-52">
       <Searchbar />
     </header>
   );
