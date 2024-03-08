@@ -3,7 +3,7 @@ import PreLoader from "components/common/Preloader";
 import Categories from "components/Categories";
 import { useGetAllProductsQuery } from "../features/api/apiSlice";
 import productCategories from "constants/productCategories";
-import Products from "../components/Products";
+import Products from "components/Products";
 
 const HomePage = () => {
   const { data: products, isLoading: featuredProductsIsLoading } =

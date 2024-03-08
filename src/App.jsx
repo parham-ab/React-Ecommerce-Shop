@@ -17,7 +17,7 @@ const App = () => {
           }
         />
       ))}
-      <Route path="/*" element={<Navigate to="/products" />} />
+      <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
     </Layout>
   );

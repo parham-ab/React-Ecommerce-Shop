@@ -12,7 +12,7 @@ const mainRoutes = [
     component: HomePage,
   },
   {
-    path: "/products/:id",
+    path: "/:id",
     title: "Product",
     component: Product,
   },

@@ -17,12 +17,12 @@ import { addItem } from "../../features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
-  const state = useSelector((state) => state.cart);
+  // const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(state);
+  // console.log(state);
   return (
     <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[350px] hover:bg-gray-200 transition-all">
-      <Link to={`products/${id}`} className="flex flex-col gap-3">
+      <Link to={`/${id}`} className="flex flex-col gap-3">
         <img
           src={image}
           alt={title}
@@ -46,7 +46,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
             <FaStar className="text-yellow-500" />
             <span className="text-sm">{rating?.rate}</span>
           </div>
-          {rating?.count < 10 && (
+          {rating?.count < 150 && (
             <span className="text-xs text-red-500">
               {rating?.count} items Left
             </span>
