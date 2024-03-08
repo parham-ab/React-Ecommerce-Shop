@@ -6,6 +6,8 @@ import { NextUIProvider } from "@nextui-org/react";
 import { BrowserRouter } from "react-router-dom";
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./features/api/apiSlice.js";
+import { Provider } from "react-redux";
+import { store } from "./app/store.js";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -13,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <NextUIProvider>
         <ApiProvider api={apiSlice}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </ApiProvider>
       </NextUIProvider>
       <Toaster />

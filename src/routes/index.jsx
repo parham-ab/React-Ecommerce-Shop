@@ -1,6 +1,5 @@
 import { lazy } from "react";
 const HomePage = lazy(() => import("pages/HomePage"));
-const Products = lazy(() => import("pages/Products"));
 const Product = lazy(() => import("pages/Product"));
 const Login = lazy(() => import("pages/Login"));
 const Settings = lazy(() => import("pages/Settings"));
@@ -11,11 +10,6 @@ const mainRoutes = [
     path: "/",
     title: "HomePage",
     component: HomePage,
-  },
-  {
-    path: "/products",
-    title: "products",
-    component: Products,
   },
   {
     path: "/products/:id",

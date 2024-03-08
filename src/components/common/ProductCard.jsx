@@ -13,8 +13,13 @@ import {
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import titleSplit from "utils/titleSplit";
+import { addItem } from "../../features/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
+  const state = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  console.log(state);
   return (
     <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[350px] hover:bg-gray-200 transition-all">
       <Link to={`products/${id}`} className="flex flex-col gap-3">
@@ -42,7 +47,9 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
             <span className="text-sm">{rating?.rate}</span>
           </div>
           {rating?.count < 10 && (
-            <span className="text-xs text-red-500">{rating?.count} items Left</span>
+            <span className="text-xs text-red-500">
+              {rating?.count} items Left
+            </span>
           )}
         </div>
 
@@ -50,7 +57,12 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
       </Link>
 
       <div className="flex items-center justify-between my-5">
-        <Button color="primary" variant="shadow" size="sm">
+        <Button
+          color="primary"
+          variant="shadow"
+          size="sm"
+          onClick={() => dispatch(addItem(id))}
+        >
           Add
         </Button>
         {/* <Button isIconOnly color="danger" aria-label="decrease" size="sm">

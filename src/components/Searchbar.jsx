@@ -21,7 +21,7 @@ const Searchbar = () => {
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   return (
-    <div className="flex items-center justify-between px-3 py-1 bg-gray-200 shadow-lg fixed w-full z-10" >
+    <div className="flex items-center justify-between px-3 py-1 bg-gray-200 shadow-lg fixed w-full z-10">
       <div className="flex items-center gap-[30px]">
         <img src={logo} alt={"logo"} width={"37px"} />
         <Input
