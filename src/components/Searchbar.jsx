@@ -8,16 +8,17 @@ import {
   DropdownSection,
   DropdownItem,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoExitOutline } from "react-icons/io5";
 import { FaUserAlt } from "react-icons/fa";
 import searchbarMenu from "constants/serchbarMenu";
 import { IoIosSearch } from "react-icons/io";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useGetAllProductsQuery } from "../features/api/apiSlice";
 import titleSplit from "utils/titleSplit";
 
 const Searchbar = () => {
+  const location = useLocation();
   const { data } = useGetAllProductsQuery();
   const [inputVal, setInputVal] = useState(" ");
   const [filteredData, setFilteredData] = useState([]);
@@ -26,6 +27,10 @@ const Searchbar = () => {
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
+  useEffect(() => {
+    setInputVal("");
+    setFilteredData([]);
+  }, [location]);
   const filterHandle = (e) => {
     setInputVal(e.target.value);
     const filteredItems = data.filter((item) => {
@@ -45,6 +50,7 @@ const Searchbar = () => {
 
         <div>
           <Input
+            value={inputVal}
             ref={newInputVal}
             onChange={filterHandle}
             // onBlur={() => setFilteredData([])}
@@ -56,8 +62,7 @@ const Searchbar = () => {
               <IoIosSearch className="text-black/50  dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
             }
           />
-          {/*  */}
-          <div className="bg-gray-100 border-solid border-1 rounded-lg">
+          <div className="bg-gray-100 border-solid border-1 rounded-lg w-fit absolute top-[55px] left-[80px]">
             {filteredData.length !== 0 &&
               filteredData.slice(0, 6).map((item) => (
                 <Link key={item.id} to={`/${item.id}`}>
@@ -68,8 +73,6 @@ const Searchbar = () => {
               ))}
           </div>
         </div>
-
-        {/*  */}
       </div>
 
       <Dropdown>
