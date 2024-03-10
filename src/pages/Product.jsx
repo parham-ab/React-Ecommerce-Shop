@@ -8,12 +8,7 @@ import { useEffect } from "react";
 import titleSplit from "utils/titleSplit";
 import { FaStar } from "react-icons/fa6";
 import PreLoader from "components/common/Preloader";
-import ProductCard from "components/common/ProductCard";
-import { EffectCards, EffectCreative, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-cards";
-import "swiper/css/effect-creative";
+import ProductSlider from "../components/ProductSlider";
 
 const Product = () => {
   const { id: productId } = useParams();
@@ -95,36 +90,12 @@ const Product = () => {
         </div>
       </div>
 
-      <div className="block sm:hidden">
-        <Swiper
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          effect={"cards"}
-          grabCursor={true}
-          modules={[Autoplay, EffectCreative]}
-          className="mySwiper"
-        >
-          {similarCategories?.map((item) => (
-            <SwiperSlide key={item.id}>
-              <ProductCard freeDelivery {...item} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      <div className="hidden sm:block">
-        <Swiper
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          effect={"cards"}
-          grabCursor={true}
-          modules={[Autoplay, EffectCards]}
-          className="mySwiper"
-        >
-          {similarCategories?.map((item) => (
-            <SwiperSlide key={item.id}>
-              <ProductCard freeDelivery {...item} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <h3
+        className={`text-2xl font-bold text-gray-600 border-b-2 border-purple-800 w-fit m-auto mt-20`}
+      >
+        Similar Products
+      </h3>
+      <ProductSlider dataContent={similarCategories} />
     </div>
   );
 };

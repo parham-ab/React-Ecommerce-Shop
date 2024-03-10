@@ -7,12 +7,10 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-  Button,
 } from "@nextui-org/react";
-
+import { Link } from "react-router-dom";
 import { IoExitOutline } from "react-icons/io5";
 import { FaUserAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import searchbarMenu from "../constants/serchbarMenu";
 import { IoIosSearch } from "react-icons/io";
 
@@ -23,7 +21,9 @@ const Searchbar = () => {
   return (
     <div className="flex items-center justify-between px-3 py-1 bg-gray-200 shadow-lg fixed w-full z-10">
       <div className="flex items-center gap-[30px]">
-        <img src={logo} alt={"logo"} width={"37px"} />
+        <Link to="/">
+          <img src={logo} alt={"logo"} width={"37px"} />
+        </Link>
         <Input
           type="text"
           placeholder="Search..."
