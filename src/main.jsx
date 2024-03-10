@@ -18,11 +18,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ApiProvider api={apiSlice}>
           <Provider store={store}>
             <App />
+            <ScrollToTop />
           </Provider>
         </ApiProvider>
       </NextUIProvider>
       <Toaster />
-      <ScrollToTop />
     </BrowserRouter>
   </React.StrictMode>
 );

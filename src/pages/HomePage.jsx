@@ -1,33 +1,28 @@
+import { useGetAllProductsQuery } from "../features/api/apiSlice";
+import productCategories from "constants/productCategories";
 import FeaturedProducts from "components/FeaturedProducts";
 import PreLoader from "components/common/Preloader";
 import Categories from "components/Categories";
-import { useGetAllProductsQuery } from "../features/api/apiSlice";
-import productCategories from "constants/productCategories";
 import Products from "components/Products";
 
 const HomePage = () => {
-  const { data: products, isLoading: featuredProductsIsLoading } =
-    useGetAllProductsQuery();
-
+  const { data: products, isLoading } = useGetAllProductsQuery();
   return (
     <>
       <section>
         <h3
           className={`text-2xl font-bold text-gray-600 border-b-2 border-purple-800 w-fit mx-auto ${
-            !featuredProductsIsLoading && "mb-20"
+            !isLoading && "mb-20"
           }`}
         >
           Featured Products
         </h3>
 
-        {featuredProductsIsLoading ? (
+        {isLoading ? (
           <PreLoader />
         ) : (
           <div className="grid xs:grid-cols-12 md:grid-cols-3 gap-3">
-            <FeaturedProducts
-              products={products}
-              isLoading={featuredProductsIsLoading}
-            />
+            <FeaturedProducts products={products} isLoading={isLoading} />
           </div>
         )}
       </section>
