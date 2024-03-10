@@ -5,3 +5,15 @@
 body {
   font-family: "Nunito", sans-serif;
 }
+.swiper {
+  margin: 70px 0;
+  width: 240px;
+  height: 350px;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 20px;
+}

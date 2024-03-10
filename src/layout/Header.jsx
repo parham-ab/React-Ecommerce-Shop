@@ -1,8 +1,10 @@
+import { useLocation } from "react-router-dom";
 import Searchbar from "components/Searchbar";
 
 const Header = () => {
+  const location = useLocation();
   return (
-    <header className="pb-52">
+    <header className={location.pathname === "/" ? "pb-52":'pb-20'}>
       <Searchbar />
     </header>
   );

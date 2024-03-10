@@ -8,6 +8,7 @@ import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./features/api/apiSlice.js";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
+import ScrollToTop from "hooks/scrollToTop";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </ApiProvider>
       </NextUIProvider>
       <Toaster />
+      <ScrollToTop />
     </BrowserRouter>
   </React.StrictMode>
 );
