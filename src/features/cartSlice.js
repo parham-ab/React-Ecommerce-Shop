@@ -12,54 +12,40 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const existingItem = state.selectedItems.find(
+      const itemIndex = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
-      if (existingItem) {
-        existingItem.quantity++;
+      if (itemIndex >= 0) {
+        state.selectedItems[itemIndex].quantity += 1;
       } else {
-        state.selectedItems.push({ ...action.payload, quantity: 1 });
+        const product = { ...action.payload, quantity: 1 };
+        state.selectedItems.push(product);
       }
-      state.count++;
-      state.totalPay += action.payload.price;
-    },
-    increase: (state, action) => {
-      const selectedItem = state.selectedItems.find(
-        (item) => item.id === action.payload.id
-      );
-      if (selectedItem) {
-        selectedItem.quantity++;
-        state.count++;
-        state.totalPay += selectedItem.price;
-      }
-    },
-    decrease: (state, action) => {
-      const selectedItem = state.selectedItems.find(
-        (item) => item.id === action.payload.id
-      );
-      if (selectedItem) {
-        if (selectedItem.quantity > 1) {
-          selectedItem.quantity--;
-          state.count--;
-          state.totalPay -= selectedItem.price;
-        }
-      }
+      localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     removeItem: (state, action) => {
       state.selectedItems = state.selectedItems.filter(
         (item) => item.id !== action.payload.id
       );
-      state.count -= action.payload.quantity;
-      state.totalPay -= action.payload.price * action.payload.quantity;
+      localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
-    clearCart: (state) => {
-      state.selectedItems = [];
-      state.count = 0;
-      state.totalPay = 0;
+    decrease: (state, action) => {
+      const index = state.selectedItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (state.selectedItems[index].quantity > 0) {
+        state.selectedItems[index].quantity--;
+      }
+      localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
-    toggleCheckOut: (state) => {
-      state.checkOut = !state.checkOut;
+    checkout: (state) => {
+      localStorage.setItem(
+        "shopStore-productslist",
+        JSON.stringify(initialState)
+      );
+      return initialState;
     },
+    clear: () => initialState,
   },
 });
 

@@ -1,25 +1,18 @@
 import { FaTruckFast } from "react-icons/fa6";
 import { TiMinus } from "react-icons/ti";
-import { FaStar, FaRegTrashAlt } from "react-icons/fa";
-import { IoIosAdd } from "react-icons/io";
+import { FaStar, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-  Button,
-  Tooltip,
-} from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import titleSplit from "utils/titleSplit";
-import { addItem } from "../../features/cartSlice";
+import { addItem, decrease, removeItem } from "../../features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import quantityCount from "../../utils/quantityCount";
 
 const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
-  // const state = useSelector((state) => state.cart);
+  const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // console.log(state);
+  console.log(state);
   return (
     <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[350px] hover:bg-gray-200 transition-all">
       <Link to={`/${id}`} className="flex flex-col gap-3">
@@ -61,21 +54,41 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
           color="primary"
           variant="shadow"
           size="sm"
-          onClick={() => dispatch(addItem(id))}
+          onClick={() => dispatch(addItem({ id }))}
         >
-          Add
+          {quantityCount(state, id) <= 0 ? "Add" : <FaPlus />}
         </Button>
-        {/* <Button isIconOnly color="danger" aria-label="decrease" size="sm">
+
+        <span
+          className={`bg-black flex items-center justify-center text-white ${
+            quantityCount(state, id) && "w-[33px] h-[33px]"
+          } rounded-full text-xs`}
+        >
+          {quantityCount(state, id)}
+        </span>
+
+        {quantityCount(state, id) === 1 && (
+          <Button
+            isIconOnly
+            color="danger"
+            aria-label="delete"
+            size="sm"
+            onClick={() => dispatch(removeItem({ id }))}
+          >
+            <FaRegTrashAlt className="text-xl" />
+          </Button>
+        )}
+        {quantityCount(state, id) > 1 && (
+          <Button
+            isIconOnly
+            color="danger"
+            aria-label="decrease"
+            size="sm"
+            onClick={() => dispatch(decrease({ id }))}
+          >
             <TiMinus className="text-xl" />
           </Button>
-          <Button isIconOnly color="danger" aria-label="decrease" size="sm">
-            <FaRegTrashAlt className="text-xl" />
-          </Button> */}
-
-        {/* {count} */}
-        {/* <Button isIconOnly color="success" aria-label="add" size="sm">
-            <IoIosAdd className="text-xl" />
-          </Button> */}
+        )}
       </div>
     </div>
   );
