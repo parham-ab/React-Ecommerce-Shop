@@ -1,4 +1,4 @@
-import { Breadcrumbs, BreadcrumbItem, Chip } from "@nextui-org/react";
+import { Breadcrumbs, BreadcrumbItem, Chip, Button } from "@nextui-org/react";
 import { Link, useParams } from "react-router-dom";
 import {
   useGetAllProductsQuery,
@@ -6,12 +6,19 @@ import {
 } from "../features/api/apiSlice";
 import { useEffect } from "react";
 import titleSplit from "utils/titleSplit";
-import { FaStar } from "react-icons/fa6";
+import { FaPlus, FaStar } from "react-icons/fa6";
 import PreLoader from "components/common/Preloader";
-import ProductSlider from "../components/ProductSlider";
+import ProductSlider from "components/ProductSlider";
+import quantityCount from "utils/quantityCount";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, decrease, removeItem } from "../features/cartSlice";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { TiMinus } from "react-icons/ti";
 
 const Product = () => {
   const { id: productId } = useParams();
+  const state = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const {
     data: product,
     isLoading,
@@ -22,7 +29,7 @@ const Product = () => {
     (item) => item?.category === product?.category
   );
   similarCategories?.shift();
-
+  console.log(state);
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -87,6 +94,49 @@ const Product = () => {
           <Chip color="success" variant="bordered">
             ${product?.price}
           </Chip>
+          <div className="flex items-center justify-evenly my-5">
+            <Button
+              color="primary"
+              variant="shadow"
+              size="sm"
+              isIconOnly
+              onClick={() => dispatch(addItem({ id: productId }))}
+              className={`${quantityCount(state, productId) <= 0 && "w-full"}`}
+            >
+              {quantityCount(state, productId) <= 0 ? "Add" : <FaPlus />}
+            </Button>
+
+            <span
+              className={`bg-black flex items-center justify-center text-white ${
+                quantityCount(state, productId) && "w-[33px] h-[33px]"
+              } rounded-full text-xs`}
+            >
+              {quantityCount(state, productId)}
+            </span>
+
+            {quantityCount(state, productId) === 1 && (
+              <Button
+                isIconOnly
+                color="danger"
+                aria-label="delete"
+                size="sm"
+                onClick={() => dispatch(removeItem({ id: productId }))}
+              >
+                <FaRegTrashAlt className="text-xl" />
+              </Button>
+            )}
+            {quantityCount(state, productId) > 1 && (
+              <Button
+                isIconOnly
+                color="danger"
+                aria-label="decrease"
+                size="sm"
+                onClick={() => dispatch(decrease({ id: productId }))}
+              >
+                <TiMinus className="text-xl" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 

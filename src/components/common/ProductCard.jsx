@@ -1,18 +1,16 @@
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FaTruckFast } from "react-icons/fa6";
 import { TiMinus } from "react-icons/ti";
 import { FaStar, FaRegTrashAlt, FaPlus } from "react-icons/fa";
-
 import { Button, Tooltip } from "@nextui-org/react";
-import { Link } from "react-router-dom";
 import titleSplit from "utils/titleSplit";
 import { addItem, decrease, removeItem } from "../../features/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
 import quantityCount from "../../utils/quantityCount";
 
 const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
   const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(state);
   return (
     <div className="bg-gray-100 p-2 rounded-xl w-[240px] h-[350px] hover:bg-gray-200 transition-all">
       <Link to={`/${id}`} className="flex flex-col gap-3">
@@ -51,6 +49,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
 
       <div className="flex items-center justify-between my-5">
         <Button
+          isIconOnly={!quantityCount(state, id) <= 0}
           color="primary"
           variant="shadow"
           size="sm"
