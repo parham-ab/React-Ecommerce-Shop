@@ -1,5 +1,5 @@
 import logo from "assets/shop.png";
-import { Avatar, Input } from "@nextui-org/react";
+import { Avatar, Badge, Input } from "@nextui-org/react";
 
 import {
   Dropdown,
@@ -16,8 +16,11 @@ import { IoIosSearch } from "react-icons/io";
 import { useState, useRef, useEffect } from "react";
 import { useGetAllProductsQuery } from "../features/api/apiSlice";
 import titleSplit from "utils/titleSplit";
+import { useSelector } from "react-redux";
 
 const Searchbar = () => {
+  const state = useSelector((state) => state.cart);
+  console.log(state);
   const location = useLocation();
   const { data } = useGetAllProductsQuery();
   const [inputVal, setInputVal] = useState(" ");
@@ -42,10 +45,12 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-3 py-1 bg-gray-200 shadow-lg fixed w-full z-10">
+    <div className="flex items-center justify-between px-3 py-2 bg-gray-200 shadow-lg fixed w-full z-10">
       <div className="flex items-center gap-[30px]">
         <Link to="/">
-          <img src={logo} alt={"logo"} width={"37px"} />
+          <Badge content="99" size="sm" shape="circle" color="danger">
+            <img src={logo} alt={"logo"} width={"37px"} />
+          </Badge>
         </Link>
 
         <div>
@@ -53,7 +58,6 @@ const Searchbar = () => {
             value={inputVal}
             ref={newInputVal}
             onChange={filterHandle}
-            // onBlur={() => setFilteredData([])}
             type="text"
             placeholder="Search..."
             size=""

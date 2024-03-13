@@ -29,7 +29,6 @@ const Product = () => {
     (item) => item?.category === product?.category
   );
   similarCategories?.shift();
-  console.log(state);
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -100,38 +99,38 @@ const Product = () => {
               variant="shadow"
               size="sm"
               isIconOnly
-              onClick={() => dispatch(addItem({ id: productId }))}
-              className={`${quantityCount(state, productId) <= 0 && "w-full"}`}
+              onClick={() => dispatch(addItem({ id: +productId }))}
+              className={`${quantityCount(state, +productId) <= 0 && "w-full"}`}
             >
-              {quantityCount(state, productId) <= 0 ? "Add" : <FaPlus />}
+              {quantityCount(state, +productId) <= 0 ? "Add" : <FaPlus />}
             </Button>
 
             <span
               className={`bg-black flex items-center justify-center text-white ${
-                quantityCount(state, productId) && "w-[33px] h-[33px]"
+                quantityCount(state, +productId) && "w-[33px] h-[33px]"
               } rounded-full text-xs`}
             >
-              {quantityCount(state, productId)}
+              {quantityCount(state, +productId)}
             </span>
 
-            {quantityCount(state, productId) === 1 && (
+            {quantityCount(state, +productId) === 1 && (
               <Button
                 isIconOnly
                 color="danger"
                 aria-label="delete"
                 size="sm"
-                onClick={() => dispatch(removeItem({ id: productId }))}
+                onClick={() => dispatch(removeItem({ id: +productId }))}
               >
                 <FaRegTrashAlt className="text-xl" />
               </Button>
             )}
-            {quantityCount(state, productId) > 1 && (
+            {quantityCount(state, +productId) > 1 && (
               <Button
                 isIconOnly
                 color="danger"
                 aria-label="decrease"
                 size="sm"
-                onClick={() => dispatch(decrease({ id: productId }))}
+                onClick={() => dispatch(decrease({ id: +productId }))}
               >
                 <TiMinus className="text-xl" />
               </Button>

@@ -49,24 +49,24 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
 
       <div className="flex items-center justify-between my-5">
         <Button
-          isIconOnly={!quantityCount(state, id) <= 0}
+          isIconOnly={!quantityCount(state, +id) <= 0}
           color="primary"
           variant="shadow"
           size="sm"
           onClick={() => dispatch(addItem({ id }))}
         >
-          {quantityCount(state, id) <= 0 ? "Add" : <FaPlus />}
+          {quantityCount(state, +id) <= 0 ? "Add" : <FaPlus />}
         </Button>
 
         <span
           className={`bg-black flex items-center justify-center text-white ${
-            quantityCount(state, id) && "w-[33px] h-[33px]"
+            quantityCount(state, +id) && "w-[33px] h-[33px]"
           } rounded-full text-xs`}
         >
-          {quantityCount(state, id)}
+          {quantityCount(state, +id)}
         </span>
 
-        {quantityCount(state, id) === 1 && (
+        {quantityCount(state, +id) === 1 && (
           <Button
             isIconOnly
             color="danger"
@@ -77,7 +77,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
             <FaRegTrashAlt className="text-xl" />
           </Button>
         )}
-        {quantityCount(state, id) > 1 && (
+        {quantityCount(state, +id) > 1 && (
           <Button
             isIconOnly
             color="danger"
