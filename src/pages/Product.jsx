@@ -33,7 +33,6 @@ const Product = () => {
     refetch();
   }, [refetch]);
   if (isLoading) return <PreLoader />;
-
   return (
     <div>
       <Breadcrumbs
@@ -99,7 +98,9 @@ const Product = () => {
               variant="shadow"
               size="sm"
               isIconOnly
-              onClick={() => dispatch(addItem({ id: +productId }))}
+              onClick={() =>
+                dispatch(addItem({ id: +productId, price: product?.price }))
+              }
               className={`${quantityCount(state, +productId) <= 0 && "w-full"}`}
             >
               {quantityCount(state, +productId) <= 0 ? "Add" : <FaPlus />}
