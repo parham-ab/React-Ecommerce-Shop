@@ -65,7 +65,14 @@ export const cartSlice = createSlice({
       );
       return initialState;
     },
-    clear: () => initialState,
+
+    clearCart: (state) => {
+      state.selectedItems = [];
+      state.count = 0;
+      state.totalPay = 0;
+      state.checkOut = false;
+      localStorage.setItem("shopStore-productslist", JSON.stringify(state));
+    },
   },
 });
 

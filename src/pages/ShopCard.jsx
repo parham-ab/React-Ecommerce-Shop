@@ -4,14 +4,19 @@ import {
   CardBody,
   CardFooter,
   Divider,
-  Link,
-  Image,
   Button,
 } from "@nextui-org/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../features/cartSlice";
+import notify from "../utils/notify";
 
 const ShopCard = () => {
   const { count, totalPay } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const clearCartHandler = () => {
+    dispatch(clearCart());
+    notify("colored", 3000, "success", "Card cleared");
+  };
 
   return (
     <div>
@@ -32,7 +37,7 @@ const ShopCard = () => {
         </CardBody>
         <CardFooter className="flex items-center justify-between">
           <Button color="success">Checkout</Button>
-          <Button color="danger" variant="light">
+          <Button color="danger" variant="light" onClick={clearCartHandler}>
             Clear
           </Button>
         </CardFooter>

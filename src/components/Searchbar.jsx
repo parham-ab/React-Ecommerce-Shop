@@ -20,7 +20,6 @@ import { useSelector } from "react-redux";
 
 const Searchbar = () => {
   const state = useSelector((state) => state.cart.count);
-  console.log(state);
   const location = useLocation();
   const { data } = useGetAllProductsQuery();
   const [inputVal, setInputVal] = useState(" ");
