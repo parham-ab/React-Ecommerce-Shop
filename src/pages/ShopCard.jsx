@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -6,16 +8,23 @@ import {
   Divider,
   Button,
 } from "@nextui-org/react";
-import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../features/cartSlice";
-import notify from "../utils/notify";
+import notify from "utils/notify";
+import { checkoutCart, clearCart } from "../features/cartSlice";
 
 const ShopCard = () => {
-  const { count, totalPay } = useSelector((state) => state.cart);
+  const { count, totalPay, selectedItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const clearCartHandler = () => {
     dispatch(clearCart());
     notify("colored", 3000, "success", "Card cleared");
+  };
+  const checkOutHandler = () => {
+    dispatch(checkoutCart());
+    notify("colored", 3000, "success", "Checked out successfully!");
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
   };
 
   return (
@@ -36,8 +45,25 @@ const ShopCard = () => {
           </div>
         </CardBody>
         <CardFooter className="flex items-center justify-between">
-          <Button color="success">Checkout</Button>
-          <Button color="danger" variant="light" onClick={clearCartHandler}>
+          <Button
+            color="success"
+            className={`${
+              !selectedItems.length ? "opacity-55 cursor-not-allowed" : ""
+            }`}
+            onClick={checkOutHandler}
+            disabled={!selectedItems.length}
+          >
+            Checkout
+          </Button>
+          <Button
+            color="danger"
+            variant="light"
+            className={`${
+              !selectedItems.length ? "opacity-55 cursor-not-allowed" : ""
+            }`}
+            onClick={clearCartHandler}
+            disabled={!selectedItems.length}
+          >
             Clear
           </Button>
         </CardFooter>

@@ -58,14 +58,13 @@ export const cartSlice = createSlice({
       state.totalPay = totalPay;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
-    checkout: (state) => {
-      localStorage.setItem(
-        "shopStore-productslist",
-        JSON.stringify(initialState)
-      );
-      return initialState;
+    checkoutCart: (state) => {
+      state.selectedItems = [];
+      state.count = 0;
+      state.totalPay = 0;
+      state.checkOut = true;
+      localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
-
     clearCart: (state) => {
       state.selectedItems = [];
       state.count = 0;
@@ -76,13 +75,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const {
-  addItem,
-  increase,
-  decrease,
-  removeItem,
-  clearCart,
-  toggleCheckOut,
-} = cartSlice.actions;
+export const { addItem, decrease, removeItem, clearCart, checkoutCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
