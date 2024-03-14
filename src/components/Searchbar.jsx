@@ -19,7 +19,7 @@ import titleSplit from "utils/titleSplit";
 import { useSelector } from "react-redux";
 
 const Searchbar = () => {
-  const state = useSelector((state) => state.cart);
+  const state = useSelector((state) => state.cart.count);
   console.log(state);
   const location = useLocation();
   const { data } = useGetAllProductsQuery();
@@ -48,9 +48,13 @@ const Searchbar = () => {
     <div className="flex items-center justify-between px-3 py-2 bg-gray-200 shadow-lg fixed w-full z-10">
       <div className="flex items-center gap-[30px]">
         <Link to="/">
-          <Badge content="99" size="sm" shape="circle" color="danger">
+          {state ? (
+            <Badge content={state} size="lg" shape="circle" color="danger">
+              <img src={logo} alt={"logo"} width={"37px"} />
+            </Badge>
+          ) : (
             <img src={logo} alt={"logo"} width={"37px"} />
-          </Badge>
+          )}
         </Link>
 
         <div>

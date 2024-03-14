@@ -10,6 +10,14 @@ const initialState = storedState
       checkOut: false,
     };
 
+const sumItems = (items) => {
+  const count = items.reduce((total, product) => total + product.quantity, 0);
+  const totalPay = items
+    .reduce((total, product) => total + product.price * product.quantity, 0)
+    .toFixed(2);
+  return { count, totalPay };
+};
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -24,12 +32,18 @@ export const cartSlice = createSlice({
         const product = { ...action.payload, quantity: 1 };
         state.selectedItems.push(product);
       }
+      const { count, totalPay } = sumItems(state.selectedItems);
+      state.count = count;
+      state.totalPay = totalPay;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     removeItem: (state, action) => {
       state.selectedItems = state.selectedItems.filter(
         (item) => item.id !== action.payload.id
       );
+      const { count, totalPay } = sumItems(state.selectedItems);
+      state.count = count;
+      state.totalPay = totalPay;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     decrease: (state, action) => {
@@ -39,6 +53,9 @@ export const cartSlice = createSlice({
       if (state.selectedItems[index].quantity > 0) {
         state.selectedItems[index].quantity--;
       }
+      const { count, totalPay } = sumItems(state.selectedItems);
+      state.count = count;
+      state.totalPay = totalPay;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     checkout: (state) => {

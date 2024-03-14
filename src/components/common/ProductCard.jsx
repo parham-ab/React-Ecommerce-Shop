@@ -53,7 +53,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
           color="primary"
           variant="shadow"
           size="sm"
-          onClick={() => dispatch(addItem({ id }))}
+          onClick={() => dispatch(addItem({ id, price }))}
         >
           {quantityCount(state, +id) <= 0 ? "Add" : <FaPlus />}
         </Button>
@@ -83,7 +83,7 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
             color="danger"
             aria-label="decrease"
             size="sm"
-            onClick={() => dispatch(decrease({ id }))}
+            onClick={() => dispatch(decrease({ id,price }))}
           >
             <TiMinus className="text-xl" />
           </Button>

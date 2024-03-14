@@ -6,8 +6,8 @@ const FeaturedProducts = ({ products }) => {
     .slice(0, 3);
   return (
     <>
-      {mutableProducts.map((product) => (
-        <div key={product.id} className="m-auto">
+      {mutableProducts?.map((product) => (
+        <div key={product?.id} className="m-auto">
           <ProductCard freeDelivery {...product} />
         </div>
       ))}

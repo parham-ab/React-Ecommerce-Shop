@@ -3,7 +3,7 @@ const HomePage = lazy(() => import("pages/HomePage"));
 const Product = lazy(() => import("pages/Product"));
 const Login = lazy(() => import("pages/Login"));
 const Settings = lazy(() => import("pages/Settings"));
-const ShoppingCard = lazy(() => import("pages/ShoppingCard"));
+const ShopCard = lazy(() => import("pages/ShopCard"));
 
 const mainRoutes = [
   {
@@ -24,7 +24,7 @@ const mainRoutes = [
   {
     path: "/shoppingCard",
     title: "ShoppingCard",
-    component: ShoppingCard,
+    component: ShopCard,
   },
   {
     path: "/settings",
