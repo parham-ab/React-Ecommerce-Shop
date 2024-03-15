@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -18,9 +18,10 @@ import {
   removeItem,
 } from "../features/cartSlice";
 import { TiMinus } from "react-icons/ti";
-import quantityCount from "../utils/quantityCount";
+import quantityCount from "utils/quantityCount";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import titleSplit from "utils/titleSplit";
+import NoProducts from "components/NoProducts";
 
 const ShopCard = () => {
   const state = useSelector((state) => state.cart);
@@ -38,11 +39,10 @@ const ShopCard = () => {
       navigate("/");
     }, 3000);
   };
-  console.log(selectedItems);
   return (
-    <div>
+    <div className="min-h-screen">
       <Card className="max-w-[300px] flex m-auto">
-        <CardHeader className="flex items-center justify-between gap-1">
+        <CardHeader className="flex items-center justify-between gap-1 z-0">
           <p className="text-md">Total Items:</p>
           <span className="text-small text-gray-400 font-bold">{count}</span>
         </CardHeader>
@@ -80,31 +80,40 @@ const ShopCard = () => {
           </Button>
         </CardFooter>
       </Card>
-      <Card className="my-14 bg-blue-300">
-        <CardBody>
-          {selectedItems?.map((item) => (
-            <div key={item?.id} className="flex items-center justify-between">
-              <div className="flex items-center gap-5">
-                <img
-                  src={item?.image}
-                  alt={item?.id}
-                  width={"80px"}
-                  height={"80px"}
-                  className="m-auto object-contain w-[80px] h-[80px]"
-                />
 
-                <div>
-                  <Tooltip content={item?.title}>
-                    <h3 className="text-sm font-bold">
-                      {titleSplit(item?.title)}
-                    </h3>
-                  </Tooltip>
-                  <span>$ {item?.price?.toLocaleString()}</span>
-                </div>
-              </div>
+      {selectedItems?.length ? (
+        <Card className="m-14">
+          <CardBody>
+            {selectedItems?.map((item) => (
+              <div
+                key={item?.id}
+                className="flex flex-col sm:flex-row items-center justify-between bg-gray-200 p-3 m-1 rounded-2xl shadow-md"
+              >
+                <Link
+                  to={`/${item?.id}`}
+                  className="flex flex-col sm:flex-row items-center gap-5"
+                >
+                  <img
+                    src={item?.image}
+                    alt={item?.id}
+                    width={"80px"}
+                    height={"80px"}
+                    className="m-auto object-contain w-[80px] h-[80px]"
+                  />
 
-              <div>
-                <div className="flex items-center justify-between my-5">
+                  <div>
+                    <Tooltip content={item?.title}>
+                      <h3 className="text-sm font-bold">
+                        {titleSplit(item?.title)}
+                      </h3>
+                    </Tooltip>
+                    <small className="text-gray-600">
+                      $ {item?.price?.toLocaleString()}
+                    </small>
+                  </div>
+                </Link>
+
+                <section className="flex items-center justify-between my-5">
                   <Button
                     isIconOnly={!quantityCount(state, +item?.id) <= 0}
                     color="primary"
@@ -156,12 +165,14 @@ const ShopCard = () => {
                       <TiMinus className="text-xl" />
                     </Button>
                   )}
-                </div>
+                </section>
               </div>
-            </div>
-          ))}
-        </CardBody>
-      </Card>
+            ))}
+          </CardBody>
+        </Card>
+      ) : (
+        <NoProducts />
+      )}
     </div>
   );
 };
