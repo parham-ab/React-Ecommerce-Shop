@@ -99,7 +99,14 @@ const Product = () => {
               size="sm"
               isIconOnly
               onClick={() =>
-                dispatch(addItem({ id: +productId, price: product?.price }))
+                dispatch(
+                  addItem({
+                    id: +productId,
+                    title: product?.title,
+                    image: product?.image,
+                    price: product?.price,
+                  })
+                )
               }
               className={`${quantityCount(state, +productId) <= 0 && "w-full"}`}
             >

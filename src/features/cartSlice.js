@@ -35,6 +35,7 @@ export const cartSlice = createSlice({
       const { count, totalPay } = sumItems(state.selectedItems);
       state.count = count;
       state.totalPay = totalPay;
+      state.checkOut = false;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     removeItem: (state, action) => {
@@ -44,6 +45,7 @@ export const cartSlice = createSlice({
       const { count, totalPay } = sumItems(state.selectedItems);
       state.count = count;
       state.totalPay = totalPay;
+      state.checkOut = false;
       localStorage.setItem("shopStore-productslist", JSON.stringify(state));
     },
     decrease: (state, action) => {
