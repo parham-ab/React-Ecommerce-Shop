@@ -17,10 +17,9 @@ const Product = () => {
     refetch,
   } = useGetProductQuery({ id: productId });
   const { data: products } = useGetAllProductsQuery();
-  const similarCategories = products?.filter(
-    (item) => item?.category === product?.category
-  );
-  similarCategories?.shift();
+  const similarCategories = products
+    ?.filter((item) => item?.category === product?.category)
+    ?.filter((item) => item.id != productId);
   useEffect(() => {
     refetch();
   }, [refetch]);
