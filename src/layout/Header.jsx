@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import Searchbar from "components/Searchbar";
-
 const Header = () => {
   const location = useLocation();
   return (
@@ -9,5 +8,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

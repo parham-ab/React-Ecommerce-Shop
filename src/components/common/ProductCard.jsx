@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Tooltip } from "@nextui-org/react";
+import titleSplit from "utils/titleSplit";
+import quantityCount from "utils/quantityCount";
+import { addItem, decrease, removeItem } from "features/cartSlice";
 import { FaTruckFast } from "react-icons/fa6";
 import { FaStar, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import { TiMinus } from "react-icons/ti";
-import titleSplit from "utils/titleSplit";
-import quantityCount from "utils/quantityCount";
-import { addItem, decrease, removeItem } from "../../features/cartSlice";
 
-const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
+const ProductCard = ({ id, title, image, price, rating }) => {
   const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
@@ -21,14 +21,12 @@ const ProductCard = ({ id, title, image, price, rating, freeDelivery }) => {
           height={"150px"}
           className="m-auto object-contain w-[150px] h-[150px]"
         />
-        {freeDelivery && (
-          <span className="flex items-center gap-2">
-            <FaTruckFast className="text-red-500" />
-            <p className="text-xs text-gray-600 dark:text-white font-bold">
-              Free Delivery
-            </p>
-          </span>
-        )}
+        <span className="flex items-center gap-2">
+          <FaTruckFast className="text-red-500" />
+          <p className="text-xs text-gray-600 dark:text-white font-bold">
+            Free Delivery
+          </p>
+        </span>
         <Tooltip content={title}>
           <h3 className="text-sm font-bold">{titleSplit(title)}</h3>
         </Tooltip>

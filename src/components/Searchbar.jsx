@@ -13,12 +13,12 @@ import { FaUserAlt } from "react-icons/fa";
 import searchbarMenu from "constants/serchbarMenu";
 import { IoIosSearch } from "react-icons/io";
 import { useState, useRef, useEffect } from "react";
-import { useGetAllProductsQuery } from "../features/api/apiSlice";
+import { useGetAllProductsQuery } from "features/api/apiSlice";
 import titleSplit from "utils/titleSplit";
 import { useDispatch, useSelector } from "react-redux";
 import DarkModeToggle from "./DarkmodeToggle";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
-import { toggleDarkMode } from "../features/utilsSlice";
+import { toggleDarkMode } from "features/utilsSlice";
 
 const Searchbar = () => {
   const state = useSelector((state) => state.cart.count);
@@ -64,8 +64,7 @@ const Searchbar = () => {
             <img src={logo} alt={"logo"} width={"37px"} />
           )}
         </Link>
-
-        <div>
+        <>
           <Input
             value={inputVal}
             ref={newInputVal}
@@ -93,9 +92,8 @@ const Searchbar = () => {
                 </Link>
               ))}
           </div>
-        </div>
+        </>
       </div>
-
       <Dropdown>
         <DropdownTrigger>
           <Avatar

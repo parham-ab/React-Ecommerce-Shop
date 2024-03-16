@@ -9,9 +9,8 @@ import { apiSlice } from "./features/api/apiSlice.js";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import ScrollToTop from "hooks/useScrollToTop";
-import { ToastContainer, Zoom, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
