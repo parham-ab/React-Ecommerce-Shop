@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-gray-300 text-center py-1 mt-14 w-full font-bold text-gray-700">
+    <footer className="bg-gray-300 dark:bg-neutral-900 dark:text-white text-center py-1 mt-14 w-full font-bold text-gray-700">
       Developed With ❤️ By{" "}
       <a
         href="https://parham-ab.netlify.app/"

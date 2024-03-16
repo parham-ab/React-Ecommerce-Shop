@@ -1,6 +1,5 @@
 import logo from "assets/shop.png";
 import { Avatar, Badge, Input } from "@nextui-org/react";
-
 import {
   Dropdown,
   DropdownTrigger,
@@ -16,18 +15,20 @@ import { IoIosSearch } from "react-icons/io";
 import { useState, useRef, useEffect } from "react";
 import { useGetAllProductsQuery } from "../features/api/apiSlice";
 import titleSplit from "utils/titleSplit";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import DarkModeToggle from "./DarkmodeToggle";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { toggleDarkMode } from "../features/utilsSlice";
 
 const Searchbar = () => {
   const state = useSelector((state) => state.cart.count);
+  const theme = useSelector((state) => state.utils.theme);
+  const dispatch = useDispatch();
   const location = useLocation();
   const { data } = useGetAllProductsQuery();
   const [inputVal, setInputVal] = useState(" ");
   const [filteredData, setFilteredData] = useState([]);
   const newInputVal = useRef();
-
-  const iconClasses =
-    "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   useEffect(() => {
     setInputVal("");
@@ -42,9 +43,17 @@ const Searchbar = () => {
       ? setFilteredData([])
       : setFilteredData(filteredItems);
   };
-
+  const toggleDarkModeHandler = () => {
+    dispatch(toggleDarkMode(theme === "dark" ? "light" : "dark"));
+  };
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  }, [theme]);
   return (
-    <div className="flex items-center justify-between px-3 py-2 bg-gray-200 shadow-lg fixed w-full z-10">
+    <div className="flex items-center justify-between px-3 py-2 dark:bg-neutral-900 bg-gray-200 shadow-lg fixed w-full z-10">
       <div className="flex items-center gap-[30px]">
         <Link to="/">
           {state ? (
@@ -66,14 +75,19 @@ const Searchbar = () => {
             size=""
             className="sm:w-[240px] md:w-[400px]"
             endContent={
-              <IoIosSearch className="text-black/50  dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
+              <IoIosSearch className="text-black/50  text-slate-400 pointer-events-none flex-shrink-0" />
             }
           />
-          <div className="bg-gray-100 border-solid border-1 rounded-lg w-fit absolute top-[55px] left-[80px]">
+          <div
+            className={
+              filteredData.length &&
+              "bg-gray-100 dark:bg-neutral-800 border-solid border-1 rounded-lg w-fit absolute top-[55px] left-[80px]"
+            }
+          >
             {filteredData.length !== 0 &&
               filteredData.slice(0, 6).map((item) => (
                 <Link key={item.id} to={`/${item.id}`}>
-                  <div className="sm:w-[240px] md:w-[400px] hover:bg-gray-200 p-2 hover:rounded-lg transition">
+                  <div className="sm:w-[240px] md:w-[400px] hover:bg-gray-200 dark:hover:bg-neutral-900 p-2 hover:rounded-lg transition">
                     {titleSplit(item.title)}
                   </div>
                 </Link>
@@ -89,17 +103,29 @@ const Searchbar = () => {
             className="transition-transform text-lg ml-3"
             icon={<FaUserAlt />}
             classNames={{
-              icon: "text-gray-700",
+              icon: "text-gray-700 dark:text-white",
             }}
           />
         </DropdownTrigger>
         <DropdownMenu variant="faded" aria-label="searchbar menu">
           <DropdownSection>
+            <DropdownItem
+              textValue={theme === "dark" ? "Light Mode" : "Dark Mode"}
+              startContent={
+                theme === "dark" ? (
+                  <MdOutlineLightMode className={"icon-class"} />
+                ) : (
+                  <MdOutlineDarkMode className={"icon-class"} />
+                )
+              }
+            >
+              <DarkModeToggle toggleDarkMode={toggleDarkModeHandler} />
+            </DropdownItem>
             {searchbarMenu.map((item) => (
               <DropdownItem
                 key={item.title}
                 textValue={item.title}
-                startContent={<item.icon className={iconClasses} />}
+                startContent={<item.icon className={"icon-class"} />}
               >
                 <Link to={item.path}>{item.title}</Link>
               </DropdownItem>

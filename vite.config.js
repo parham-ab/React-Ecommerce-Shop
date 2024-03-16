@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 const fileNames = [
   "src",
   "components",
+  "common",
   "pages",
   "services",
   "utils",

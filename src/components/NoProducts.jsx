@@ -7,5 +7,4 @@ const NoProducts = () => {
     </>
   );
 };
-
 export default NoProducts;

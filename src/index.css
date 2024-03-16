@@ -1,6 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  .section-info {
+    @apply text-2xl font-bold text-gray-600 dark:text-white border-b-2 dark:border-sky-700 border-purple-800 w-fit mx-auto;
+  }
+  .icon-class {
+    @apply text-xl text-default-500 pointer-events-none flex-shrink-0;
+  }
+}
+
+.dark-mode {
+  @apply dark:bg-gray-800;
+  /* Add more dark mode styles as needed */
+}
 /* styles */
 body {
   font-family: "Nunito", sans-serif;

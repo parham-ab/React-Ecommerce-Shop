@@ -56,8 +56,10 @@ const Product = () => {
         </div>
 
         <div className="border p-4 rounded-xl grid grid-cols-1 w-[300px] sm:w-[500px]">
-          <h1 className="text-2xl font-bold text-gray-600">{product?.title}</h1>
-          <h2 className="text-gray-500 text-lg leading-5 my-5">
+          <h1 className="text-2xl font-bold text-gray-600 dark:text-white">
+            {product?.title}
+          </h1>
+          <h2 className="text-gray-500 dark:text-gray-300 text-lg leading-5 my-5">
             {product?.description}
           </h2>
           <Chip
@@ -147,11 +149,7 @@ const Product = () => {
         </div>
       </div>
 
-      <h3
-        className={`text-2xl font-bold text-gray-600 border-b-2 border-purple-800 w-fit m-auto mt-20`}
-      >
-        Similar Products
-      </h3>
+      <h3 className={`section-info m-auto mt-20`}>Similar Products</h3>
       <ProductSlider dataContent={similarCategories} />
     </div>
   );

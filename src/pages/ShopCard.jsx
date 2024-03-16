@@ -19,8 +19,8 @@ import {
 } from "../features/cartSlice";
 import { TiMinus } from "react-icons/ti";
 import quantityCount from "utils/quantityCount";
-import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import titleSplit from "utils/titleSplit";
+import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import NoProducts from "components/NoProducts";
 
 const ShopCard = () => {
@@ -87,7 +87,7 @@ const ShopCard = () => {
             {selectedItems?.map((item) => (
               <div
                 key={item?.id}
-                className="flex flex-col sm:flex-row items-center justify-between bg-gray-200 p-3 m-1 rounded-2xl shadow-md"
+                className="flex flex-col sm:flex-row items-center justify-between bg-gray-200 dark:bg-neutral-800 p-3 m-1 rounded-2xl shadow-md"
               >
                 <Link
                   to={`/${item?.id}`}
@@ -107,7 +107,7 @@ const ShopCard = () => {
                         {titleSplit(item?.title)}
                       </h3>
                     </Tooltip>
-                    <small className="text-gray-600">
+                    <small className="text-gray-600 dark:text-neutral-300">
                       $ {item?.price?.toLocaleString()}
                     </small>
                   </div>

@@ -7,7 +7,7 @@ const Categories = ({ title, icon: Icon }) => {
   return (
     <div
       className={`flex items-center justify-center gap-1 w-fit ${
-        state === title ? "bg-blue-300" : "bg-blue-100"
+        state === title ? "bg-blue-300 dark:bg-blue-800" : "bg-blue-100 dark:bg-cyan-600"
       } p-2 rounded-3xl cursor-pointer hover:bg-blue-400 transition`}
       onClick={() => dispatch(toggleCategory(title))}
     >
