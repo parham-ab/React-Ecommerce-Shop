@@ -3,9 +3,16 @@
 React JS E-commerce web app developed by Tailwind, next UI, Redux-Toolkit, RTK Query and more...
 
 ![UI Screenshot](src/assets/1.png)
+
+
 ![UI Screenshot](src/assets/2.png)
+
+
 ![UI Screenshot](src/assets/3.png)
+
+
 ![UI Screenshot](src/assets/4.png)
+
 
 ## Features
 
