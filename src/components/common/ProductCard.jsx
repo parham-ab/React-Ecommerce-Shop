@@ -43,7 +43,7 @@ const ProductCard = ({ id, title, image, price, rating }) => {
         </div>
         <p className="font-bold text-md">$ {price.toLocaleString()}</p>
       </Link>
-      <div className="flex items-center justify-between my-5">
+      <div className="flex items-center justify-between my-3">
         <Button
           isIconOnly={!quantityCount(state, +id) <= 0}
           color="primary"
